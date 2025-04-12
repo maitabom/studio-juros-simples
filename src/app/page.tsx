@@ -6,8 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Icons } from "@/components/icons";
-import { useTheme } from 'next-themes'
 import { Sun, Moon, Computer } from 'lucide-react';
 
 export default function Home() {
@@ -23,7 +21,7 @@ export default function Home() {
   const [compoundedPerYear, setCompoundedPerYear] = useState<number>(1); // Default: Annually
   const [totalCompound, setTotalCompound] = useState<number | null>(null);
 
-  const { theme, setTheme } = useTheme()
+  const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
 
   const calculateSimpleInterest = () => {
     if (principalSimple !== null && rateSimple !== null && timeSimple !== null) {
@@ -110,11 +108,9 @@ export default function Home() {
                 />
               </div>
 
-              <div className="flex justify-between">
-                <Button onClick={calculateSimpleInterest} className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Calcular
-                </Button>
-              </div>
+              <Button onClick={calculateSimpleInterest} className="bg-accent text-accent-foreground hover:bg-accent/90 w-full">
+                Calcular
+              </Button>
 
               {interestSimple !== null && totalSimple !== null && (
                 <div className="mt-4">
@@ -177,11 +173,9 @@ export default function Home() {
                 />
               </div>
 
-              <div className="flex justify-between">
-                <Button onClick={calculateCompoundInterest} className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Calcular
-                </Button>
-              </div>
+              <Button onClick={calculateCompoundInterest} className="bg-accent text-accent-foreground hover:bg-accent/90 w-full">
+                Calcular
+              </Button>
 
               {totalCompound !== null && (
                 <div className="mt-4">
@@ -193,7 +187,7 @@ export default function Home() {
             </TabsContent>
           </Tabs>
 
-          <Button variant="outline" onClick={clearFields}>
+          <Button variant="outline" onClick={clearFields} className="w-full">
             Limpar
           </Button>
           <div className="flex justify-center mt-4 space-x-2">
@@ -215,4 +209,3 @@ export default function Home() {
     </div>
   );
 }
-
