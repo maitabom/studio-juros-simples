@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sun, Moon, Computer } from 'lucide-react';
-import { ThemeProvider } from 'next-themes'
 import { useTheme } from 'next-themes'
 
 export default function Home() {
@@ -24,9 +23,7 @@ export default function Home() {
   const [totalCompound, setTotalCompound] = useState<number | null>(null);
 
   return (
-    <ThemeProvider enableSystem={true} attribute="class">
     <InterestCalculator/>
-    </ThemeProvider>
   );
 }
 
