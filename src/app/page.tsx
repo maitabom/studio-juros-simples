@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Icons } from "@/components/icons";
 import { useTheme } from 'next-themes'
+import { Sun, Moon, Computer } from 'lucide-react';
 
 export default function Home() {
   const [principalSimple, setPrincipalSimple] = useState<number | null>(null);
@@ -195,13 +196,23 @@ export default function Home() {
           <Button variant="outline" onClick={clearFields}>
             Limpar
           </Button>
-          <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-            <option value="system">System</option>
-            <option value="dark">Dark</option>
-            <option value="light">Light</option>
-          </select>
+          <div className="flex justify-center mt-4 space-x-2">
+            <Button size="icon" onClick={() => setTheme('system')}>
+              <Computer className="h-5 w-5" />
+              <span className="sr-only">System</span>
+            </Button>
+            <Button size="icon" onClick={() => setTheme('light')}>
+              <Sun className="h-5 w-5" />
+              <span className="sr-only">Light</span>
+            </Button>
+            <Button size="icon" onClick={() => setTheme('dark')}>
+              <Moon className="h-5 w-5" />
+              <span className="sr-only">Dark</span>
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </div>
   );
 }
+
