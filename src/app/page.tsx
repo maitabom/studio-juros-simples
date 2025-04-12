@@ -38,7 +38,7 @@ export default function Home() {
   const calculateCompoundInterest = () => {
     if (principalCompound !== null && rateCompound !== null && timeCompound !== null) {
       const calculatedTotal =
-        principalCompound * Math.pow(1 + (rateCompound / 100) / compoundedPerYear, compoundedPerYear * timeCompound);
+        principalCompound * Math.pow(1 + (rateCompound / 100) / compoundedPerYear, (compoundedPerYear * timeCompound) / 12);
 
       setTotalCompound(calculatedTotal);
     }
@@ -155,7 +155,7 @@ export default function Home() {
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="timeCompound" className="text-foreground">
-                  Tempo (anos)
+                  Tempo (meses)
                 </Label>
                 <Input
                   type="number"
@@ -202,3 +202,4 @@ export default function Home() {
     </div>
   );
 }
+
