@@ -108,7 +108,7 @@ export default function Home() {
                 />
               </div>
 
-              <Button onClick={calculateSimpleInterest} className="bg-accent text-accent-foreground hover:bg-accent/90 w-full">
+              <Button onClick={calculateSimpleInterest} className="bg-accent mt-4 text-accent-foreground hover:bg-accent/90 w-full">
                 Calcular
               </Button>
 
@@ -173,7 +173,7 @@ export default function Home() {
                 />
               </div>
 
-              <Button onClick={calculateCompoundInterest} className="bg-accent text-accent-foreground hover:bg-accent/90 w-full">
+              <Button onClick={calculateCompoundInterest} className="bg-accent mt-4 text-accent-foreground hover:bg-accent/90 w-full">
                 Calcular
               </Button>
 
