@@ -94,7 +94,7 @@ function InterestCalculator() {
             </TabsList>
             <TabsContent value="simple">
               <div className="grid gap-2">
-                <Label htmlFor="principalSimple" className="text-foreground">
+                <Label htmlFor="principalSimple" className="text-foreground mt-4">
                   Valor Principal
                 </Label>
                 <Input
@@ -106,7 +106,7 @@ function InterestCalculator() {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="rateSimple" className="text-foreground">
+                <Label htmlFor="rateSimple" className="text-foreground mt-4">
                   Taxa de Juros (%)
                 </Label>
                 <Input
@@ -118,7 +118,7 @@ function InterestCalculator() {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="timeSimple" className="text-foreground">
+                <Label htmlFor="timeSimple" className="text-foreground mt-4">
                   Tempo (meses)
                 </Label>
                 <Input
@@ -147,7 +147,7 @@ function InterestCalculator() {
             </TabsContent>
             <TabsContent value="compound">
               <div className="grid gap-2">
-                <Label htmlFor="principalCompound" className="text-foreground">
+                <Label htmlFor="principalCompound" className="text-foreground mt-4">
                   Valor Principal
                 </Label>
                 <Input
@@ -159,7 +159,7 @@ function InterestCalculator() {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="rateCompound" className="text-foreground">
+                <Label htmlFor="rateCompound" className="text-foreground mt-4">
                   Taxa de Juros (%)
                 </Label>
                 <Input
@@ -171,7 +171,7 @@ function InterestCalculator() {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="timeCompound" className="text-foreground">
+                <Label htmlFor="timeCompound" className="text-foreground mt-4">
                   Tempo (meses)
                 </Label>
                 <Input
@@ -183,7 +183,7 @@ function InterestCalculator() {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="compoundedPerYear" className="text-foreground">
+                <Label htmlFor="compoundedPerYear" className="text-foreground mt-4">
                   Compounded Per Year
                 </Label>
                 <Input
@@ -209,7 +209,7 @@ function InterestCalculator() {
             </TabsContent>
           </Tabs>
 
-          <Button variant="outline" onClick={clearFields} className="w-full">
+          <Button variant="outline" onClick={clearFields} className="w-full mt-4">
             Limpar
           </Button>
           <div className="flex justify-center mt-4 space-x-2">
