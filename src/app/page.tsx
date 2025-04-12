@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sun, Moon, Computer } from 'lucide-react';
+import { ThemeProvider } from 'next-themes'
+import { useTheme } from 'next-themes'
 
 export default function Home() {
   const [principalSimple, setPrincipalSimple] = useState<number | null>(null);
@@ -21,7 +23,27 @@ export default function Home() {
   const [compoundedPerYear, setCompoundedPerYear] = useState<number>(1); // Default: Annually
   const [totalCompound, setTotalCompound] = useState<number | null>(null);
 
-  const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
+  return (
+    <ThemeProvider enableSystem={true} attribute="class">
+    <InterestCalculator/>
+    </ThemeProvider>
+  );
+}
+
+function InterestCalculator() {
+  const [principalSimple, setPrincipalSimple] = useState<number | null>(null);
+  const [rateSimple, setRateSimple] = useState<number | null>(null);
+  const [timeSimple, setTimeSimple] = useState<number | null>(null);
+  const [interestSimple, setInterestSimple] = useState<number | null>(null);
+  const [totalSimple, setTotalSimple] = useState<number | null>(null);
+
+  const [principalCompound, setPrincipalCompound] = useState<number | null>(null);
+  const [rateCompound, setRateCompound] = useState<number | null>(null);
+  const [timeCompound, setTimeCompound] = useState<number | null>(null);
+  const [compoundedPerYear, setCompoundedPerYear] = useState<number>(1); // Default: Annually
+  const [totalCompound, setTotalCompound] = useState<number | null>(null);
+
+  const { setTheme } = useTheme();
 
   const calculateSimpleInterest = () => {
     if (principalSimple !== null && rateSimple !== null && timeSimple !== null) {
