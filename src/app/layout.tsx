@@ -1,8 +1,11 @@
+'use client';
+
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
 import {ThemeProvider} from 'next-themes';
 import {useEffect, useState} from 'react';
+import {metadata} from './metadata';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -13,11 +16,6 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
-
-export const metadata: Metadata = {
-  title: 'Juros Simples',
-  description: 'Calculadora de Juros Simples e Compostos',
-};
 
 export default function RootLayout({
   children,
@@ -40,28 +38,20 @@ function ThemeProviderComponent({children}: {children: React.ReactNode}) {
   'use client';
 
   const [mounted, setMounted] = useState(false);
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark' | 'system'>(
-    'system'
-  );
 
   useEffect(() => {
     setMounted(true);
-    const storedTheme = localStorage.getItem('theme') as
-      | 'light'
-      | 'dark'
-      | 'system'
-      | null;
-
-    if (storedTheme) {
-      setResolvedTheme(storedTheme);
-    }
   }, []);
 
-  const isDarkMode = resolvedTheme === 'dark';
+  if (!mounted) {
+    return <>{children}</>;
+  }
 
   return (
-        <ThemeProvider enableSystem={true} attribute="class" value={resolvedTheme}>
+        <ThemeProvider enableSystem={true} attribute="class" defaultTheme="system">
           {children}
         </ThemeProvider>
   );
 }
+
+
