@@ -7,23 +7,23 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Icons } from "@/components/icons";
+import { useTheme } from 'next-themes'
 
 export default function Home() {
-  // Simple Interest States
   const [principalSimple, setPrincipalSimple] = useState<number | null>(null);
   const [rateSimple, setRateSimple] = useState<number | null>(null);
   const [timeSimple, setTimeSimple] = useState<number | null>(null);
   const [interestSimple, setInterestSimple] = useState<number | null>(null);
   const [totalSimple, setTotalSimple] = useState<number | null>(null);
 
-  // Compound Interest States
   const [principalCompound, setPrincipalCompound] = useState<number | null>(null);
   const [rateCompound, setRateCompound] = useState<number | null>(null);
   const [timeCompound, setTimeCompound] = useState<number | null>(null);
   const [compoundedPerYear, setCompoundedPerYear] = useState<number>(1); // Default: Annually
   const [totalCompound, setTotalCompound] = useState<number | null>(null);
 
-  // Simple Interest Calculation
+  const { theme, setTheme } = useTheme()
+
   const calculateSimpleInterest = () => {
     if (principalSimple !== null && rateSimple !== null && timeSimple !== null) {
       const calculatedInterest = (principalSimple * rateSimple * timeSimple) / 100;
@@ -34,7 +34,6 @@ export default function Home() {
     }
   };
 
-  // Compound Interest Calculation
   const calculateCompoundInterest = () => {
     if (principalCompound !== null && rateCompound !== null && timeCompound !== null) {
       const calculatedTotal =
@@ -44,7 +43,6 @@ export default function Home() {
     }
   };
 
-  // Clear Fields Function
   const clearFields = () => {
     setPrincipalSimple(null);
     setRateSimple(null);
@@ -197,9 +195,13 @@ export default function Home() {
           <Button variant="outline" onClick={clearFields}>
             Limpar
           </Button>
+          <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+            <option value="system">System</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
         </CardContent>
       </Card>
     </div>
   );
 }
-
